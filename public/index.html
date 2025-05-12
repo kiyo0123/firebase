@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firebase API 呼び出しデモ</title>
+</head>
+<body>
+  <h1>Firebase Functions API Call</h1>
+  <button id="callApiBtn">API を呼び出す</button>
+  <p id="responseArea"></p>
+
+  <script>
+    document.getElementById("callApiBtn").addEventListener("click", async () => {
+      try {
+        const response = await fetch("/api/helloWorld");
+        const text = await response.text();
+        document.getElementById("responseArea").textContent = `応答: ${text}`;
+      } catch (error) {
+        document.getElementById("responseArea").textContent = `エラー: ${error}`;
+      }
+    });
+  </script>
+</body>
+</html>
+
